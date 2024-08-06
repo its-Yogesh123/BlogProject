@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Home Page</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <div class="container mt-3">
+        <div class="card ">
+            <img src="<%- locals.getBlog.coverImageURL %>" height="500px" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%- locals.getBlog.title %> </h5>
+              <pre class="card-text"> " <%- locals.getBlog.body %> " </pre>
+             
+            </div> <hr>
+            <div>
+                <img src="/<%= getBlog.createdBy.profilePic %>" width="80px"><%- locals.getBlog.createdBy.name %>
+                
+            </div>
+            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+          </div>
+          <button type="button" class="btn btn-primary">
+            Comments <span class="badge text-bg-secondary">(<%- comments.length %>)</span>
+          </button> <br>
+          <% comments.forEach(comment => { %>
+           <img src="/<%- comment.createdBy.profilePic %>" width="50px">
+           
+           <% if (String(comment.createdBy._id) === String(getBlog.createdBy._id) ) { %>
+            <div class="badge text-bg-primary text-wrap" style="width: 6rem;">
+                <%- comment.createdBy.name %>
+              </div>
+            <% } else { %>
+                <div class="badge text-bg-secondary text-wrap" style="width: 6rem;">
+                    <%- comment.createdBy.name %>
+                  </div>
+              <% } %> <br>
+            <%- comment.content %> <br>
+          <% }) %>
+          <% if (locals.user) { %>
+            <form action="/blog/comment/<%- locals.getBlog._id %>" method="post">
+                <div class="input-group mt-3  mb-3">
+                    <input type="text" class="form-control" placeholder="Comment" name="comment"  aria-describedby="button-addon2">
+                    <button class="btn btn-outline-primary" type="submit" id="button-addon2">Send</button>
+                  </div>
+              </form>
+          <% } %>
+    </div>
+    
+    <%- include('./partials/scripts') %>
+</body>
+</html>

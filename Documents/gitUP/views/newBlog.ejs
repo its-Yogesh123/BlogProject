@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Home Page</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <form action="/blog/new" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Choose Thumbnail</label>
+            <input class="form-control" type="file" name="image" id="formFile">
+          </div>
+        <div class="form-floating mt-3">
+            <input type="text" name="title" class="form-control" id="floatingInput" placeholder="MY ^log">
+            <label for="floatingInput">Title</label>
+          </div>
+        <div class="form-floating">
+            <textarea class="form-control mt-5" name="body" placeholder="Enter Full Blog" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Body</label>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mt-5">Post</button>
+          </div>
+    </form>
+    <%- include('./partials/scripts') %>
+</body>
+</html>

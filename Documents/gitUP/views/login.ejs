@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .mainContainer{
+    position: relative;
+    height: 100vh;
+}
+.mainContainer .loginContainer .loginlogoContainer{
+    width: 60px;
+    height: 60px;
+    margin: 0px auto;
+    margin-bottom: 10px;
+    background-image: url("./img.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.mainContainer .loginContainer span{
+    font-size: 25px;
+}
+.mainContainer .loginContainer{
+    text-align: center;
+    width: 450px;
+    height: 500px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    padding: 50px;
+
+}
+.mainContainer .loginContainer a{
+    display: inline-block;
+    font-size: 15px;
+    margin-right: 25px;
+    margin-top: 40px;
+}
+.loginContainer input{
+    width: 100%;
+    height: 40px;
+    padding: 20px;
+    font-size: 15px;
+    margin: 10px 0px;
+}
+.loginContainer input:nth-child(1){
+    margin-top: 50px;
+}
+.loginContainer input[type='submit']{
+    width: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+  </style>
+    <%- include('./partials/head') %>
+    <title>Login Page</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <div class="mainContainer">
+      <div class="loginContainer">
+          <div class="loginlogoContainer"></div>
+          <span>Login to ^Log</span>
+          <form action="/login" method="post">
+              <input type="text" name="email" id="" placeholder="Email"> <br>
+              <input type="password" name="password" id="" placeholder="Password">
+              <br> <input type="submit" value="Login"> <br>
+              <a href="/signup">Create New Account</a>
+              <a href="" style="pointer-events: none;">Forgot Password ?</a>
+          </form>
+      </div>
+  </div>
+    <%- include('./partials/scripts') %>
+</body>
+</html>
