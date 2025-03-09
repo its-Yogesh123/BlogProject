@@ -27,12 +27,17 @@ app.use("/",router);
 app.use("/blog",blogRouter);
 // --- routes
 
-app.get("/",async(req,res)=>{
+app.get("",async(req,res)=>{
+   try{
     const allBlog=await Blog.find({});
-    res.render('home',{
+    return res.render('home',{
         user:req.user,
         blogs:allBlog,
     });
+   }
+   catch (err){
+    return res.status(500).send("Soory Our Side error");
+   }
 });
 app.listen(PORT,()=>{console.log("Server Started at : ",PORT);});
 // means while only developing not at deploying time  (npm i nodemon -D)

@@ -15,7 +15,7 @@ const storage=multer.diskStorage({
 });
 const upload=multer({storage});
 router.get("/new",(req,res)=>{
-    res.render("newBlog",{
+    return res.render("newBlog",{
         user:req.user
     });
 })

@@ -10,7 +10,7 @@ async function handleCreateNewBlog(req,res){
         coverImageURL:`/uploads/${req.file.filename}`,
         createdBy:req.user._id,
     });
-    return res.redirect("/");
+    return res.redirect("");
 }
 async function handleGetBlog(req,res){
     const blog=await Blog.findById(req.params.id).populate("createdBy");
