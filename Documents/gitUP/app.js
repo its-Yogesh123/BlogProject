@@ -36,7 +36,7 @@ app.get("",async(req,res)=>{
     });
    }
    catch (err){
-    return res.status(500).send("Soory Our Side error");
+    return res.send("Soory Our Side error");
    }
 });
 app.listen(PORT,()=>{console.log("Server Started at : ",PORT);});
